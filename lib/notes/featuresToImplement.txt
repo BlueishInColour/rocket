@@ -1,0 +1,28 @@
+this app is specifically for content whichh includes
+>blog style web
+>video resources from youtube
+
+>ads space for developers
+
+
+ablity to 
+>create posts
+>comment
+>like or dislike
+
+what i dont need
+>to host content like videos and picture, the can be embebed with url
+    links and youtube or unsplash or stuf links
+>to create serverful but can write my own endpoints that interract with my own backend stuff
+
+12 october ,2023, thursday
+>want to send data to deta through my own api ie ill create my own upload screen
+>get data from deta and diplay it in the app.
+
+17 october , 2023, wednesday
+>complete the cart screen
+>learn and implement payment gateway
+>everybutton ikn the pos should fulfil their promises
+>add a on click splash screen
+>connect deta to the api
+>
