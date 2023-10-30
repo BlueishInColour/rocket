@@ -7,16 +7,19 @@ part of 'article.dart';
 // **************************************************************************
 
 Article _$ArticleFromJson(Map<String, dynamic> json) => Article(
+      id: json['id'] as String? ?? 'nokenok',
       title: json['title'] as String? ?? '',
       pictureUrl: json['pictureUrl'] as String? ?? '',
-      likesCount: json['likesCount'] as String? ?? '',
-      viewsCount: json['viewsCount'] as String? ?? '',
-      commentCount: json['commentCount'] as String? ?? '',
-      creator: json['creator'] as String? ?? '',
+      likesCount: json['likesCount'] as String? ?? '0',
+      viewsCount: json['viewsCount'] as String? ?? '0',
+      commentCount: json['commentCount'] as String? ?? '0',
+      creator: json['creator'] as String? ?? 'blueishInColour',
+      creatorChannel: json['creatorChannel'] as String? ?? '',
       content: json['content'] as String? ?? '',
     );
 
 Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
+      'id': instance.id,
       'title': instance.title,
       'pictureUrl': instance.pictureUrl,
       'likesCount': instance.likesCount,
@@ -24,4 +27,5 @@ Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
       'commentCount': instance.commentCount,
       'content': instance.content,
       'creator': instance.creator,
+      'creatorChannel': instance.creatorChannel,
     };

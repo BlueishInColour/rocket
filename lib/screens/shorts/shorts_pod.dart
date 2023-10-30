@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icon.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket/theme/theme.dart';
 
-import '../../models/article.dart';
+import 'package:rocket/models/article.dart';
 // import '../../utils/comment_screen.dart';
-import '../../utils/wrapped_buttons.dart';
+import '../../utils/plain_buttons.dart';
+import '../../utils/utils_functions.dart';
 // import '../../utils/write_comment.dart';
 // import '../../utils/utils_functions.dart';
 
@@ -32,11 +34,17 @@ class ShortsPodState extends State<ShortsPod> {
 
     Widget creatorHeader(context) {
       return (Row(children: [
+        CircleAvatar(
+          backgroundColor: lPalette.primary,
+          radius: 10,
+        ),
         const SizedBox(width: 5),
         Text(
           article.creator,
-          style: const TextStyle(
-              overflow: TextOverflow.ellipsis, fontWeight: FontWeight.w800),
+          style: TextStyle(
+              overflow: TextOverflow.ellipsis,
+              color: lPalette.text,
+              fontWeight: FontWeight.w800),
         ),
       ]));
     }
@@ -65,8 +73,8 @@ class ShortsPodState extends State<ShortsPod> {
                       color: lPalette.primary,
                       borderRadius: BorderRadius.circular(15)),
                   height: 250,
-                  child: const Center(
-                    child: Text('unable to load image'),
+                  child: Center(
+                    child: Text(article.pictureUrl),
                   ))),
         ),
       );
@@ -77,9 +85,10 @@ class ShortsPodState extends State<ShortsPod> {
         margin: EdgeInsets.symmetric(horizontal: 5),
         child: Text(article.title,
             maxLines: 3,
-            style: TextStyle(
-              overflow: TextOverflow.ellipsis,
-              fontSize: 20,
+            style: GoogleFonts.zeyada(
+              // overflow: TextOverflow.ellipsis,
+              color: lPalette.text,
+              fontSize: widget.article.pictureUrl.isNotEmpty ? 20 : 25,
               fontWeight: FontWeight.bold,
             )),
       );
@@ -92,8 +101,8 @@ class ShortsPodState extends State<ShortsPod> {
         child: Column(
             // mainAxisAlignment: ,
             children: [
-              WrappedButton(
-                leadingIcon: LineIcon.thumbsUpAlt(),
+              PlainButton(
+                leadingIcon: const LineIcon.thumbsUpAlt(),
                 text: article.likesCount,
                 snackBarIcon: LineIcon.thumbsUpAlt(
                   color: Colors.white60,
@@ -102,8 +111,8 @@ class ShortsPodState extends State<ShortsPod> {
                 unClickedSnackBarText: 'you disliked this post',
                 requestUrl: 'http://localhost:8000/blog/like/${article.id}',
               ),
-              SizedBox(height: 5),
-              CommentButton(),
+              const SizedBox(height: 5),
+              const PlainCommentButton(),
             ]),
       );
     }
@@ -112,31 +121,34 @@ class ShortsPodState extends State<ShortsPod> {
       height: widget.podHeight,
       width: widget.podWidth,
       color: Colors.white54,
-      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
-      margin: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+      padding: EdgeInsets.symmetric(vertical: 25, horizontal: 5),
+      // margin: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-              width: 80,
+              width: 40,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CircleAvatar(
-                    backgroundColor: lPalette.primary,
-                  ),
+                  Expanded(child: SizedBox()),
                   bottom(context),
                 ],
               )),
-          Container(
-            width: 400,
-            child: Column(
-              children: [
-                creatorHeader(context),
-                SizedBox(height: 4),
-                image(context),
-                textBody(context),
-              ],
+          Expanded(
+            child: Container(
+              width: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  creatorHeader(context),
+                  const SizedBox(height: 4),
+                  article.pictureUrl.isEmpty ? SizedBox() : image(context),
+                  textBody(context),
+                  const SizedBox(height: 4),
+                  styledivider
+                ],
+              ),
             ),
           ),
         ],

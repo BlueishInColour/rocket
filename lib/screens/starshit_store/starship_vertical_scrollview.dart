@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 import './starship_pod.dart';
-import '../../models/goods.dart';
+import 'package:rocket/models/goods.dart';
 import 'dart:convert';
 // import 'package:line_icons/line_icons.dart';
 // import '../../utils/escape_icon.dart';

@@ -7,21 +7,7 @@ class SimpleTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Expanded(
-          child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-            fillColor: Colors.white,
-            hintText: 'title here',
-            hintStyle:
-                const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: lPalette.primary),
-                borderRadius: BorderRadius.circular(10)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: lPalette.primary),
-                borderRadius: BorderRadius.circular(10))),
-      )),
+      child: Expanded(child: TextField(controller: controller)),
     );
   }
 }

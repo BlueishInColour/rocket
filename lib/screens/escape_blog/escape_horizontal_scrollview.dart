@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import './rocket_pod.dart';
-import '../../models/article.dart';
+import '../../../models/article.dart';
 // import 'package:line_icons/line_icons.dart';
 import '../../utils/escape_icon.dart';
-// import '../../models/article.dart';
+// import 'package:rocket/models/article.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 

@@ -22,7 +22,9 @@ DarkPalette dPalette = DarkPalette();
 
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
-  // textTheme: GoogleFonts.montserratTextTheme(),
+  textTheme: GoogleFonts.pacificoTextTheme(
+    Typography.blackCupertino,
+  ),
   scaffoldBackgroundColor: lPalette.backgroundColor,
   appBarTheme: AppBarTheme(
     elevation: 0,
@@ -37,10 +39,24 @@ ThemeData lightMode = ThemeData(
     labelColor: Colors.green,
     unselectedLabelColor: Colors.black54,
     dividerColor: lPalette.primary,
-    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-    unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+    labelStyle: GoogleFonts.pacifico(
+      fontWeight: FontWeight.bold,
+      fontSize: 20,
+    ),
+    unselectedLabelStyle: GoogleFonts.pacifico(fontWeight: FontWeight.bold),
     indicatorColor: lPalette.primary,
   ),
+  inputDecorationTheme: InputDecorationTheme(
+      fillColor: Colors.white,
+      hintStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+      enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+              color: Color.fromARGB(57, 158, 158, 158), width: 7),
+          borderRadius: BorderRadius.circular(10)),
+      focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+              color: const Color.fromARGB(144, 76, 175, 79), width: 7),
+          borderRadius: BorderRadius.circular(10))),
   primaryColor: const Color.fromARGB(220, 216, 196, 159),
 );
 ThemeData darkMode = ThemeData(brightness: Brightness.dark);

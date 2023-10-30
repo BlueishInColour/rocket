@@ -68,15 +68,6 @@ class CommentScreenState extends State<CommentScreen> {
                 maxLines: 10,
                 minLines: 1,
                 controller: controller,
-                decoration: const InputDecoration(
-                    hintText: 'write comment .....',
-                    hintStyle: TextStyle(
-                      fontSize: 14,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black26)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green))),
               ),
             ),
           ),

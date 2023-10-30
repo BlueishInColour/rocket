@@ -17,19 +17,17 @@ class EscapeIconState extends State<EscapeIcon> {
     return SizedBox(
       child: Row(
         children: [
-          const LineIcon.rocket(
-            color: Colors.black45,
-          ),
-          const SizedBox(width: 15),
           Text(
-            'escape',
-            style: GoogleFonts.amethysta(
-                fontWeight: FontWeight.bold, color: Colors.black45),
+            'Quill',
+            style: GoogleFonts.pacifico(
+                fontSize: 30,
+                fontWeight: FontWeight.w900,
+                color: Colors.black87),
           ),
           const Expanded(
             child: SizedBox(),
           ),
-          const ToogleThemeButton()
+          // const ToogleThemeButton(),
           // const CreatePostButton()
         ],
       ),

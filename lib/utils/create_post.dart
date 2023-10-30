@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import './quill.dart';
 import './esc_back_button.dart';
 import './simple_text_field.dart';
+import '../models/article.dart';
 
 class CreatePostButton extends StatefulWidget {
   const CreatePostButton({super.key});
@@ -59,6 +60,18 @@ class CreatePostScreenState extends State<CreatePostScreen> {
         title: SimpleTextField(
           controller: _controller,
         ));
-    return const Scaffold(body: Quill());
+    return Scaffold(
+        body: Quill(
+      article: Article(
+        commentCount: '256k',
+        content: '<h1>this is totally a sample</h1>',
+        creator: 'babyboo',
+        creatorChannel: 'babieworld',
+        likesCount: '0',
+        pictureUrl: 'http://ohe;oiwhje;oik.com',
+        title: 'what is the topic',
+        viewsCount: '100M',
+      ),
+    ));
   }
 }

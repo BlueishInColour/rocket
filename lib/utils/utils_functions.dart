@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:styled_divider/styled_divider.dart';
 // import '../../';
 
 escShowModelBottomSheet(context, {Widget screen = const SizedBox()}) {
@@ -24,3 +25,12 @@ showSnackBar(context, Icon icon, String text) {
         ],
       )));
 }
+
+var styledivider = const StyledDivider(
+  color: Colors.green,
+  height: 20,
+  thickness: 2,
+  lineStyle: DividerLineStyle.dashdotted,
+  indent: 20,
+  endIndent: 20,
+);

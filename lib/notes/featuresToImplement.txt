@@ -26,3 +26,8 @@ what i dont need
 >add a on click splash screen
 >connect deta to the api
 >
+
+24 oct ,2023 tuesday
+>make the shorts screen work completely every single button
+starting from the "write shorts" button
+

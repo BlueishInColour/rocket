@@ -5,7 +5,7 @@ import 'package:line_icons/line_icon.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket/theme/theme.dart';
 
-import '../../models/goods.dart';
+import 'package:rocket/models/goods.dart';
 import '../../utils/wrapped_buttons.dart';
 // import '../../utils/write_comment.dart';
 // import '../../utils/utils_functions.dart';
@@ -77,6 +77,7 @@ class StarshipPodState extends State<StarshipPod> {
               maxLines: 3,
               style: const TextStyle(
                 overflow: TextOverflow.ellipsis,
+                color: Colors.black54,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               )),

@@ -2,36 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 import './rocket_pod.dart';
-import '../../models/article.dart';
+import 'package:rocket/models/article.dart';
 // import './escape_horizontal_scrollview.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class EscapeVerticalScrollView extends StatefulWidget {
-  const EscapeVerticalScrollView({super.key});
-
+  const EscapeVerticalScrollView({super.key, this.category = 'all'});
+  final String category;
   @override
   State<EscapeVerticalScrollView> createState() =>
       EscapeVerticalScrollViewState();
-}
-
-class GetArticle {
-  String getPath() {
-    return 'http://127.0.0.1:8000/';
-  }
-
-  Future<List<Article>> getArticles() async {
-    final res = await http.get(Uri.parse(getPath()));
-
-    if (res.statusCode == 200) {
-      List json = jsonDecode(res.body);
-      // List data = json['name'];
-      // print(json);
-      return json.map((article) => Article.fromJson(article)).toList();
-    } else {
-      throw Exception('Failed to fetch data');
-    }
-  }
 }
 
 class EscapeVerticalScrollViewState extends State<EscapeVerticalScrollView> {

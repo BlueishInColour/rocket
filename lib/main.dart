@@ -59,14 +59,14 @@ class TabViewState extends State<TabView> with SingleTickerProviderStateMixin {
                 // automaticIndicatorColorAdjustment: false,
                 controller: controller,
                 tabs: const [
-                  Tab(text: 'SHORTS'),
-                  Tab(text: 'BLOG'),
-                  Tab(text: 'SHOP'),
+                  Tab(text: 'shorts'),
+                  Tab(text: 'blog'),
+                  Tab(text: 'shop'),
                 ])),
       ),
       body: TabBarView(
           controller: controller,
-          children: const [EscapeScreen(), ShortsScreen(), StarShitScreen()]),
+          children: const [ShortsScreen(), EscapeScreen(), StarShitScreen()]),
     );
   }
 }

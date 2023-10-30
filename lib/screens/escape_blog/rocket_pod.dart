@@ -3,9 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:line_icons/line_icon.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket/theme/theme.dart';
-
-import '../../models/article.dart';
+import '../../utils/quill.dart';
+import 'package:rocket/models/article.dart';
 // import '../../utils/comment_screen.dart';
+import '../../utils/utils_functions.dart';
 import '../../utils/wrapped_buttons.dart';
 // import '../../utils/write_comment.dart';
 // import '../../utils/utils_functions.dart';
@@ -38,8 +39,10 @@ class RocketPodState extends State<RocketPod> {
         const SizedBox(width: 5),
         Text(
           article.creator,
-          style: const TextStyle(
-              overflow: TextOverflow.ellipsis, fontWeight: FontWeight.w800),
+          style: TextStyle(
+              overflow: TextOverflow.ellipsis,
+              color: lPalette.text,
+              fontWeight: FontWeight.w800),
         ),
       ]));
     }
@@ -78,6 +81,7 @@ class RocketPodState extends State<RocketPod> {
             style: const TextStyle(
               overflow: TextOverflow.ellipsis,
               fontSize: 20,
+              color: Colors.black54,
               fontWeight: FontWeight.bold,
             )),
       );
@@ -124,6 +128,12 @@ class RocketPodState extends State<RocketPod> {
       );
     }
 
+    goto(String article_id, {required article}) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return Quill(preview: true, article: article);
+      }));
+    }
+
     return GestureDetector(
       onTap: () {
         debugPrint('clicked');
@@ -137,9 +147,18 @@ class RocketPodState extends State<RocketPod> {
           children: [
             creatorHeader(context),
             const SizedBox(height: 4),
-            image(context),
-            textBody(context),
-            bottom(context)
+            GestureDetector(
+                onTap: () {
+                  goto('article_id', article: widget.article);
+                },
+                child: image(context)),
+            GestureDetector(
+                onTap: () {
+                  goto('article_id', article: widget.article);
+                },
+                child: textBody(context)),
+            bottom(context),
+            styledivider
           ],
         ),
       ),

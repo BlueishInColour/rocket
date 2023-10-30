@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 import './shorts_pod.dart';
-import '../../models/article.dart';
+import 'package:rocket/models/article.dart';
 // import './Shorts_horizontal_scrollview.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -17,7 +17,7 @@ class ShortsVerticalScrollView extends StatefulWidget {
 
 class GetArticle {
   String getPath() {
-    return 'http://127.0.0.1:8000/';
+    return 'http://127.0.0.1:8000';
   }
 
   Future<List<Article>> getArticles() async {
@@ -41,7 +41,7 @@ class ShortsVerticalScrollViewState extends State<ShortsVerticalScrollView> {
 
   Future<List<Article>> fetchManyArticles() async {
     // fetch blokb data
-    var res = await http.get(Uri.parse('http://127.0.0.1:8000/'));
+    var res = await http.get(Uri.parse('http://127.0.0.1:8000'));
 
     if (res.statusCode == 200) {
       // decode data`

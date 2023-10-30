@@ -7,14 +7,15 @@ import '../utils/utils_functions.dart';
 import 'package:http/http.dart' as http;
 import 'package:line_icons/line_icon.dart';
 
-class WrappedButton extends StatefulWidget {
-  const WrappedButton({
+class PlainButton extends StatefulWidget {
+  const PlainButton({
     super.key,
     this.leadingIcon = const Icon(Icons.abc),
     this.child = const SizedBox(),
     this.isChild = false,
     this.shouldShowSnackBar = true,
     // this.trailingIcon = const Icon(Icons.abc),
+
     this.text = '',
     this.snackBarIcon = const Icon(Icons.abc),
     this.badgeColor = Colors.green,
@@ -46,10 +47,10 @@ class WrappedButton extends StatefulWidget {
   final Color badgeColor;
 
   @override
-  State<WrappedButton> createState() => WrappedButtonState();
+  State<PlainButton> createState() => PlainButtonState();
 }
 
-class WrappedButtonState extends State<WrappedButton> {
+class PlainButtonState extends State<PlainButton> {
   bool onClicked = false;
   void changeColor() {
     setState(() {
@@ -84,39 +85,25 @@ class WrappedButtonState extends State<WrappedButton> {
       }
     }
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: GestureDetector(
-        onTap: onPressed,
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 3),
-          decoration: BoxDecoration(
-              color: onClicked ? Colors.green : Colors.transparent,
-              borderRadius: BorderRadius.circular(15)),
-          child: Badge(
-              backgroundColor: widget.badgeColor,
-              label: Text(widget.text),
-              child: Row(
-                children: [
-                  IconButton(onPressed: onPressed, icon: widget.leadingIcon),
-                  const SizedBox(width: 5),
-                  Text(widget.trailingText)
-                ],
-              )),
-        ),
-      ),
-    );
+    return Badge(
+        backgroundColor: widget.badgeColor,
+        label: Text(widget.text),
+        alignment: Alignment.topCenter,
+        child: IconButton(
+            onPressed: onPressed,
+            color: onClicked ? Colors.green : null,
+            icon: widget.leadingIcon));
   }
 }
 
-class CommentButton extends StatefulWidget {
-  const CommentButton({super.key, this.commentCount = '23'});
+class PlainCommentButton extends StatefulWidget {
+  const PlainCommentButton({super.key, this.commentCount = '23'});
   final String commentCount;
   @override
-  State<CommentButton> createState() => CommentButtonState();
+  State<PlainCommentButton> createState() => PlainCommentButtonState();
 }
 
-class CommentButtonState extends State<CommentButton> {
+class PlainCommentButtonState extends State<PlainCommentButton> {
   bool onClicked = false;
   void changeColor() {
     setState(() {
@@ -131,26 +118,14 @@ class CommentButtonState extends State<CommentButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: GestureDetector(
-        onTap: onPressed,
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 3),
-          decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(15)),
-          child: Badge(
-              backgroundColor: Colors.green,
-              label: Text(widget.commentCount),
-              child: Row(
-                children: [
-                  IconButton(
-                      onPressed: onPressed, icon: const LineIcon.commentAlt()),
-                ],
-              )),
-        ),
-      ),
-    );
+    return Badge(
+        backgroundColor: Colors.green,
+        label: Text(widget.commentCount),
+        alignment: Alignment.topCenter,
+        child: IconButton(
+            onPressed: onPressed,
+            icon: LineIcon.commentAlt(
+              color: onClicked ? Colors.green : null,
+            )));
   }
 }

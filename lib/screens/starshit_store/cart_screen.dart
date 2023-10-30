@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:line_icons/line_icon.dart';
 
-import '../../models/goods.dart';
+import 'package:rocket/models/goods.dart';
 import '../../theme/theme.dart';
 import 'starship_pod.dart';
 import 'package:http/http.dart' as http;
