@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:flutter_quill/flutter_quill.dart';
 import 'package:quill_html_editor/quill_html_editor.dart';
+import '../services/url.dart';
 import '../theme/theme.dart';
 import '../models/article.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -330,7 +331,7 @@ class QuillState extends State<Quill> {
                 ),
                 onClickedSnackBarText: 'post liked',
                 unClickedSnackBarText: 'you disliked this post',
-                requestUrl: 'http://localhost:8000/blog/like/${article.id}',
+                requestUri: Url().blogLikePost(article.id),
               ),
               Badge(
                   alignment: Alignment.topCenter,

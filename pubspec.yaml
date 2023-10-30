@@ -62,6 +62,9 @@ dependencies:
   # 
   styled_divider: ^1.0.5
 
+  # new dictionary feature
+  free_english_dictionary: ^0.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

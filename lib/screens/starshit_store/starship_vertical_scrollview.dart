@@ -22,7 +22,7 @@ class StarshipVerticalScrollViewState
 
   Future<List<Goods>> fetchManyGoodss() async {
     // fetch blokb data
-    var res = await http.get(Uri.parse('http://127.0.0.1:8000/goods/fit'));
+    var res = await http.get(Uri.parse('http://127.0.0.1:8080/shop'));
 
     if (res.statusCode == 200) {
       // decode data`

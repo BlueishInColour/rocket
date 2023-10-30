@@ -7,6 +7,7 @@ import 'package:rocket/theme/theme.dart';
 
 import 'package:rocket/models/article.dart';
 // import '../../utils/comment_screen.dart';
+import '../../services/url.dart';
 import '../../utils/plain_buttons.dart';
 import '../../utils/utils_functions.dart';
 // import '../../utils/write_comment.dart';
@@ -109,7 +110,7 @@ class ShortsPodState extends State<ShortsPod> {
                 ),
                 onClickedSnackBarText: 'post liked',
                 unClickedSnackBarText: 'you disliked this post',
-                requestUrl: 'http://localhost:8000/blog/like/${article.id}',
+                requestUri: Url().shortsLikePost(article.id),
               ),
               const SizedBox(height: 5),
               const PlainCommentButton(),

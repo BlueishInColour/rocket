@@ -4,6 +4,7 @@ part 'goods.g.dart';
 
 @JsonSerializable()
 class Goods {
+  String id;
   String title;
   String pictureUrl;
   String content;
@@ -20,6 +21,7 @@ class Goods {
   // DateTime time = DateTime.now();
 
   Goods({
+    this.id = '',
     this.title = '',
     this.pictureUrl = '',
     this.preorderCount = '',

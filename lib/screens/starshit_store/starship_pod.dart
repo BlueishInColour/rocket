@@ -6,6 +6,7 @@ import 'package:line_icons/line_icon.dart';
 import 'package:rocket/theme/theme.dart';
 
 import 'package:rocket/models/goods.dart';
+import '../../services/url.dart';
 import '../../utils/wrapped_buttons.dart';
 // import '../../utils/write_comment.dart';
 // import '../../utils/utils_functions.dart';
@@ -105,17 +106,20 @@ class StarshipPodState extends State<StarshipPod> {
             snackBarIcon: const LineIcon.heart(color: Colors.white60),
             onClickedSnackBarText: 'you saved this for later',
             unClickedSnackBarText: 'you un-saved this item',
+            requestUri: Url().shopLikeGoods(goods.id),
           ),
           const Expanded(child: SizedBox()),
           WrappedButton(
-              badgeColor: Colors.red,
-              text: goods.preorderCount,
-              leadingIcon: const LineIcon.history(),
-              snackBarIcon: const LineIcon.history(color: Colors.white60),
-              onClickedSnackBarText:
-                  'added to pre-order list, click cart to checkout',
-              unClickedSnackBarText: 'removed from pre-order list',
-              trailingText: 'pre-order'),
+            badgeColor: Colors.red,
+            text: goods.preorderCount,
+            leadingIcon: const LineIcon.history(),
+            snackBarIcon: const LineIcon.history(color: Colors.white60),
+            onClickedSnackBarText:
+                'added to pre-order list, click cart to checkout',
+            unClickedSnackBarText: 'removed from pre-order list',
+            trailingText: 'pre-order',
+            requestUri: Url().shopResellGoods(goods.id),
+          ),
           WrappedButton(
             badgeColor: Colors.red,
             text: goods.resellCount,
@@ -125,6 +129,7 @@ class StarshipPodState extends State<StarshipPod> {
             onClickedSnackBarText:
                 'added to re-sell list, click cart icon to complete action',
             unClickedSnackBarText: 'removed from re-sell list',
+            requestUri: Url().shopResellGoods(goods.id),
           ),
           const Expanded(child: SizedBox()),
           WrappedButton(
@@ -135,6 +140,7 @@ class StarshipPodState extends State<StarshipPod> {
             onClickedSnackBarText:
                 'added to order list, click cart to complete order',
             unClickedSnackBarText: 'removed from order list',
+            requestUri: Url().shopCartGoods(goods.id),
           ),
           const SizedBox(
             width: 5,

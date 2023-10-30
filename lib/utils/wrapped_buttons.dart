@@ -21,7 +21,7 @@ class WrappedButton extends StatefulWidget {
     this.trailingText = '',
     this.showSheet = false,
     this.bottomSheetWidget = const SizedBox(),
-    this.requestUrl = '',
+    required this.requestUri,
     this.onClickedSnackBarText = '',
     this.unClickedSnackBarText = '',
     this.page = const WriteCommentScreen(),
@@ -35,7 +35,7 @@ class WrappedButton extends StatefulWidget {
   final Icon snackBarIcon;
   final String onClickedSnackBarText;
   final String unClickedSnackBarText;
-  final String requestUrl;
+  final Uri requestUri;
 
   final Widget child;
   final bool showSheet;
@@ -60,7 +60,7 @@ class WrappedButtonState extends State<WrappedButton> {
   @override
   Widget build(BuildContext context) {
     onPressed() async {
-      var res = await http.post(Uri.parse(widget.requestUrl));
+      var res = await http.post(widget.requestUri);
       if (res.statusCode == 200) {
         changeColor();
         widget.shouldShowSnackBar

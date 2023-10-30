@@ -20,7 +20,7 @@ class EscapeVerticalScrollViewState extends State<EscapeVerticalScrollView> {
 
   Future<List<Article>> fetchManyArticles() async {
     // fetch blokb data
-    var res = await http.get(Uri.parse('http://127.0.0.1:8000/'));
+    var res = await http.get(Uri.parse('http://127.0.0.1:8080/blog'));
 
     if (res.statusCode == 200) {
       // decode data`

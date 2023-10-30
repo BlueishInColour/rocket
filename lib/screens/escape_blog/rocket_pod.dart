@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:line_icons/line_icon.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket/theme/theme.dart';
+import '../../services/url.dart';
 import '../../utils/quill.dart';
 import 'package:rocket/models/article.dart';
 // import '../../utils/comment_screen.dart';
@@ -98,7 +99,7 @@ class RocketPodState extends State<RocketPod> {
               onClickedSnackBarText: 're-posted to www.twix.com',
               unClickedSnackBarText: 'post removed from www.twix.com',
               leadingIcon: const LineIcon.retweet(),
-              requestUrl: 'http://localhost:8000/blog/repost/${article.id}',
+              requestUri: const Url().blogRePost(article.id),
               text: '23',
               trailingText: 're-post  '),
           const Expanded(child: SizedBox()),
@@ -112,7 +113,7 @@ class RocketPodState extends State<RocketPod> {
             ),
             unClickedSnackBarText: 'post unseen',
             onClickedSnackBarText: 'post seen',
-            requestUrl: 'http://localhost:8000/blog/see/${article.id}',
+            requestUri: const Url().blogSeePost(article.id),
           ),
           WrappedButton(
             leadingIcon: const LineIcon.thumbsUpAlt(),
@@ -122,7 +123,7 @@ class RocketPodState extends State<RocketPod> {
             ),
             onClickedSnackBarText: 'post liked',
             unClickedSnackBarText: 'you disliked this post',
-            requestUrl: 'http://localhost:8000/blog/like/${article.id}',
+            requestUri: const Url().blogLikePost(article.id),
           )
         ]),
       );
