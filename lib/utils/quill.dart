@@ -59,37 +59,30 @@ class QuillState extends State<Quill> {
     bool preview = widget.preview;
 
     TextStyle textStyle = const TextStyle(
-        fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 14);
+        fontWeight: FontWeight.bold, color: Colors.green, fontSize: 14);
 
     TextStyle clear = const TextStyle(
         fontWeight: FontWeight.bold, color: Colors.red, fontSize: 14);
 
     toolBar(context) {
       return ToolBar(
-        toolBarColor: lPalette.primary,
+        toolBarColor: lPalette.backgroundColor,
         activeIconColor: Colors.green,
         padding: const EdgeInsets.all(8),
         iconSize: 20,
         controller: quillController,
-        customButtons: [
-          InkWell(onTap: () {}, child: const Icon(Icons.favorite)),
-          InkWell(onTap: () {}, child: const Icon(Icons.add_circle)),
-        ],
       );
     }
 
     Widget buttonRow(context) {
       return Container(
-        color: lPalette.primary,
+        color: lPalette.backgroundColor,
         child: Row(children: [
-          //view
           TextButton(
               onPressed: () {
-                setState(() {
-                  preview = !preview;
-                });
+                Navigator.pop(context);
               },
-              child: Text('preview', style: textStyle)),
+              child: Text('cancel', style: clear)),
 
           //clear
           TextButton(
@@ -97,7 +90,7 @@ class QuillState extends State<Quill> {
                 quillController.clear();
               },
               child: Text('clear', style: clear)),
-
+          const Expanded(child: SizedBox()),
           //save text
           TextButton(
               onPressed: () async {
@@ -110,8 +103,6 @@ class QuillState extends State<Quill> {
                 }
               },
               child: Text('save', style: textStyle)),
-          TextButton(onPressed: () {}, child: Text('draft', style: textStyle)),
-          const Expanded(child: SizedBox()),
 
           //upload Article
           TextButton(
@@ -344,28 +335,24 @@ class QuillState extends State<Quill> {
     }
 
     return Scaffold(
+      backgroundColor: lPalette.backgroundColor,
       appBar: AppBar(
-        title: EscapeIcon(),
-        leading: const EscBackButton(),
-        bottom: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
-            toolbarHeight: 170,
-            title: Expanded(
-              child: Column(
-                children: [
-                  preview ? const SizedBox() : toolBar(context),
-                  buttonRow(context),
-                ],
-              ),
-            )),
+        backgroundColor: lPalette.backgroundColor,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 170,
+        title: Expanded(
+          child: Column(
+            children: [
+              preview ? const SizedBox() : toolBar(context),
+              buttonRow(context),
+            ],
+          ),
+        ),
       ),
       body: Center(
           child: SizedBox(
         child: ListView(
           children: [
-            // preview ? const SizedBox() : toolBar(context),
-            preview ? const SizedBox() : inputHeader(context),
             // buttonRow(context),
             const SizedBox(height: 20),
             title(context),

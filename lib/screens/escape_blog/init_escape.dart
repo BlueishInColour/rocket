@@ -6,7 +6,6 @@ import 'package:rocket/screens/starshit_store/init_starshit.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:rocket/screens/escape_blog/escape_horizontal_scrollview.dart';
 import '../../theme/theme.dart';
-import '../shorts/init_shorts.dart';
 import 'escape_vertical_scrollview.dart';
 // import '../../utils/toggle_theme_button.dart';
 // import '../../utils/escape_icon.dart';
@@ -15,7 +14,6 @@ import '../../test/test_api.dart';
 import '../../utils/floating_button.dart';
 import '../../utils/create_post.dart';
 import '../../utils/quill.dart';
-import '../../utils/wrapped_buttons.dart';
 import '../../utils/add_category.dart';
 
 class EscapeScreen extends StatefulWidget {
@@ -28,6 +26,8 @@ class EscapeScreen extends StatefulWidget {
 class EscapeScreenState extends State<EscapeScreen>
     with SingleTickerProviderStateMixin {
   late TabController controller;
+  final pageBucket = PageStorageBucket();
+
   String nowscreenName = 'all';
   List<String> listTabName = [
     'all',
@@ -81,6 +81,8 @@ class EscapeScreenState extends State<EscapeScreen>
             controller: controller,
             children: listTabName
                 .map((e) => EscapeVerticalScrollView(
+                      bucket: pageBucket,
+                      key: PageStorageKey<String>(e),
                       category: e,
                     ))
                 .toList()),
@@ -92,34 +94,7 @@ class EscapeScreenState extends State<EscapeScreen>
                       pageBuilder: (context, _, __) =>
                           const CreatePostScreen()));
             },
-            icon: const LineIcon.alternateFeather(size: 32)),
-        bottomSheet: Row(children: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                        pageBuilder: (context, _, __) => const Fastapi()));
-              },
-              icon: const Icon(Icons.add)),
-          TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return Quill(
-                      preview: true,
-                      article: Article(
-                          commentCount: '23',
-                          likesCount: '2',
-                          viewsCount: '13',
-                          content: '<p>this is the content of the page </p>',
-                          creator: 'oluwapelumi',
-                          pictureUrl: '',
-                          title:
-                              'mesmerizing yourself in the full climax of stupidity'));
-                }));
-              },
-              child: Text('article'))
-        ]));
+            icon: const LineIcon.alternateFeather(size: 32)));
   }
 }
 

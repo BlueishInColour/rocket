@@ -10,8 +10,11 @@ class Scroll extends StatefulWidget {
 }
 
 class ScrollState extends State<Scroll> {
+  final pageBucket = PageStorageBucket();
   @override
   Widget build(BuildContext context) {
-    return  const EscapeVerticalScrollView();
+    return EscapeVerticalScrollView(
+      bucket: pageBucket,
+    );
   }
 }

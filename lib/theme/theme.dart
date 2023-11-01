@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LightPalette {
-  var backgroundColor = Colors.white54;
-  Color primary = const Color.fromARGB(220, 216, 196, 159);
+  var backgroundColor = Colors.grey[100];
+  Color primary = Colors.black;
   Color secondary = Colors.orange;
   Color tetiary = Colors.deepOrange;
-  Color text = Colors.black54;
+  var text = const Color.fromARGB(255, 255, 255, 255);
+  var darkText = Colors.black54;
 }
 
 LightPalette lPalette = LightPalette();
@@ -27,11 +28,13 @@ ThemeData lightMode = ThemeData(
   ),
   scaffoldBackgroundColor: lPalette.backgroundColor,
   appBarTheme: AppBarTheme(
-    elevation: 0,
-    color: lPalette.primary,
-    foregroundColor: lPalette.text,
-    // backgroundColor: lPalette.primary,
-  ),
+      elevation: 0,
+      color: lPalette.primary,
+      foregroundColor: lPalette.text,
+      toolbarHeight: 30,
+      titleTextStyle: GoogleFonts.pacifico(color: Colors.white60)
+      // backgroundColor: lPalette.primary,
+      ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: lPalette.primary, foregroundColor: lPalette.text),
   tabBarTheme: TabBarTheme(
@@ -41,7 +44,7 @@ ThemeData lightMode = ThemeData(
     dividerColor: lPalette.primary,
     labelStyle: GoogleFonts.pacifico(
       fontWeight: FontWeight.bold,
-      fontSize: 20,
+      fontSize: 17,
     ),
     unselectedLabelStyle: GoogleFonts.pacifico(fontWeight: FontWeight.bold),
     indicatorColor: lPalette.primary,
@@ -50,12 +53,10 @@ ThemeData lightMode = ThemeData(
       fillColor: Colors.white,
       hintStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
       enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-              color: Color.fromARGB(57, 158, 158, 158), width: 7),
+          borderSide: BorderSide(color: Colors.black38, width: 7),
           borderRadius: BorderRadius.circular(10)),
       focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-              color: const Color.fromARGB(144, 76, 175, 79), width: 7),
+          borderSide: BorderSide(color: Colors.green, width: 7),
           borderRadius: BorderRadius.circular(10))),
   primaryColor: const Color.fromARGB(220, 216, 196, 159),
 );

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "turtle-4024f"
-  }
+    "default": "turtle-4024f",
+    "turtle-v0.01": "turtle-4024f"
+  },
+  "targets": {},
+  "etags": {}
 }

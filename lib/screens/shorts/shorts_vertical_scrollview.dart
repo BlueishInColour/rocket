@@ -38,7 +38,7 @@ class GetArticle {
 
 class ShortsVerticalScrollViewState extends State<ShortsVerticalScrollView> {
   List<Article> listOfArticles = <Article>[];
-
+  final pageStorage = PageStorageBucket();
   Future<List<Article>> fetchManyArticles() async {
     // fetch blokb data
     var res = await http.get(Uri.parse('http://127.0.0.1:8080/shorts'));
@@ -73,12 +73,15 @@ class ShortsVerticalScrollViewState extends State<ShortsVerticalScrollView> {
     if (listOfArticles.isNotEmpty) {
       return Center(
         child: SizedBox(
-          width: 500,
-          child: ListView.builder(
-              itemCount: listOfArticles.length,
-              itemBuilder: (context, index) =>
-                  ShortsPod(article: listOfArticles[index])),
-        ),
+            width: 500,
+            child: PageStorage(
+              bucket: pageStorage,
+              child: ListView.builder(
+                  key: PageStorageKey<String>('pageOne'),
+                  itemCount: listOfArticles.length,
+                  itemBuilder: (context, index) =>
+                      ShortsPod(article: listOfArticles[index])),
+            )),
       );
     }
     return Center(

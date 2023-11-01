@@ -4,7 +4,6 @@ import './theme/theme_provider.dart';
 import 'screens/escape_blog/init_escape.dart';
 import 'package:provider/provider.dart';
 import 'utils/escape_icon.dart';
-import './screens/starshit_store/init_starshit.dart';
 import '../screens/shorts/init_shorts.dart';
 
 void main() {
@@ -42,31 +41,36 @@ class TabViewState extends State<TabView> with SingleTickerProviderStateMixin {
   @override
   initState() {
     super.initState();
-    controller = TabController(length: 3, vsync: this);
+    controller = TabController(length: 2, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const EscapeIcon(),
+        toolbarHeight: 30,
+        title: const EscapeIcon(showTitle: true),
         bottom: AppBar(
+            toolbarHeight: 35,
             backgroundColor: Colors.transparent,
             title: TabBar(
                 isScrollable: true,
                 indicatorColor: lPalette.primary,
+                labelColor: Colors.green,
+                unselectedLabelColor: lPalette.text,
                 // dividerColor: Colors.green,
                 // automaticIndicatorColorAdjustment: false,
                 controller: controller,
-                tabs: const [
-                  Tab(text: 'shorts'),
-                  Tab(text: 'blog'),
-                  Tab(text: 'shop'),
+                tabs: [
+                  Tab(text: 'short'),
+                  Tab(text: 'stories'),
                 ])),
       ),
-      body: TabBarView(
-          controller: controller,
-          children: const [ShortsScreen(), EscapeScreen(), StarShitScreen()]),
+      body: TabBarView(controller: controller, children: const [
+        ShortsScreen(),
+        EscapeScreen(),
+        // StarShitScreen(),
+      ]),
     );
   }
 }

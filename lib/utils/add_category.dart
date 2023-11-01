@@ -22,7 +22,7 @@ class AddCategoryState extends State<AddCategory> {
               return AddCategoryscreen();
             });
       },
-      icon: Icon(Icons.add),
+      icon: Icon(Icons.add, color: Colors.green),
     );
   }
 }

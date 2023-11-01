@@ -8,7 +8,7 @@ List list_of_articles = [
     'likesCount': '34',
     'viewsCount': '12k',
     'creator': 'starshit',
-    'commentCount': '76'
+    'commentCount': '76',
   },
   {
     'title': 'summer beach is flamy hot right now, get back in the car',

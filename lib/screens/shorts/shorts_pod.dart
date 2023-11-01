@@ -44,7 +44,7 @@ class ShortsPodState extends State<ShortsPod> {
           article.creator,
           style: TextStyle(
               overflow: TextOverflow.ellipsis,
-              color: lPalette.text,
+              color: lPalette.darkText,
               fontWeight: FontWeight.w800),
         ),
       ]));
@@ -88,7 +88,7 @@ class ShortsPodState extends State<ShortsPod> {
             maxLines: 3,
             style: GoogleFonts.zeyada(
               // overflow: TextOverflow.ellipsis,
-              color: lPalette.text,
+              color: lPalette.darkText,
               fontSize: widget.article.pictureUrl.isNotEmpty ? 20 : 25,
               fontWeight: FontWeight.bold,
             )),

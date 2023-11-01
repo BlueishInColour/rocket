@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rocket/utils/comment_screen.dart';
-import '../theme/theme.dart';
 import './write_comment.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import '../utils/utils_functions.dart';

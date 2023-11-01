@@ -42,7 +42,7 @@ class RocketPodState extends State<RocketPod> {
           article.creator,
           style: TextStyle(
               overflow: TextOverflow.ellipsis,
-              color: lPalette.text,
+              color: lPalette.darkText,
               fontWeight: FontWeight.w800),
         ),
       ]));

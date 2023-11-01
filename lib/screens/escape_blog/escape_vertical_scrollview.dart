@@ -8,8 +8,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class EscapeVerticalScrollView extends StatefulWidget {
-  const EscapeVerticalScrollView({super.key, this.category = 'all'});
+  const EscapeVerticalScrollView(
+      {super.key, required this.bucket, this.category = 'all'});
   final String category;
+  final PageStorageBucket bucket;
   @override
   State<EscapeVerticalScrollView> createState() =>
       EscapeVerticalScrollViewState();
@@ -54,12 +56,15 @@ class EscapeVerticalScrollViewState extends State<EscapeVerticalScrollView> {
     if (listOfArticles.isNotEmpty) {
       return Center(
         child: SizedBox(
-          width: 450,
-          child: ListView.builder(
-              itemCount: listOfArticles.length,
-              itemBuilder: (context, index) =>
-                  RocketPod(article: listOfArticles[index])),
-        ),
+            width: 450,
+            child: PageStorage(
+              bucket: widget.bucket,
+              child: ListView.builder(
+                  key: PageStorageKey<String>(widget.category),
+                  itemCount: listOfArticles.length,
+                  itemBuilder: (context, index) =>
+                      RocketPod(article: listOfArticles[index])),
+            )),
       );
     }
     return Center(

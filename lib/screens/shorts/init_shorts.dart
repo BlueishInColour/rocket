@@ -14,6 +14,8 @@ class ShortsScreenState extends State<ShortsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey[100],
+        toolbarHeight: 45,
         title: const ShortsQuill(),
       ),
       body: const ShortsVerticalScrollView(),
