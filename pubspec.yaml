@@ -40,7 +40,7 @@ dependencies:
   # image_picker: ^1.0.4
   cached_network_image: ^3.3.0
   line_icons: ^2.0.3
-  flutter_quill: ^7.4.9
+  # flutter_quill: ^7.4.9
   quill_html_editor: ^2.2.6
   image_picker: ^1.0.4
 
@@ -48,24 +48,34 @@ dependencies:
   build_runner: ^2.4.6
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
-  dio: ^5.3.3
+  # dio: ^5.3.3
   webview_flutter: ^4.4.1
-  http: ^1.1.0
+  # http: ^1.1.0
 
   # storage
   hive_flutter: ^1.1.0
   hive_listener: ^1.2.1
   hive: ^2.2.3
   hive_generator: ^2.0.1
-
+  animated_splash_screen: ^1.3.0
+  get: ^4.6.6
+  # flutter_html: ^2.2.1
+  flutter_rte: ^1.0.0
+  flutter_quill:
+    git: https://github.com/singerdmx/flutter-quill.git
+  html_editor_enhanced: ^2.5.1
+  # imagekit: ^0.0.5
+  imagekit_io: ^0.0.3
+  uuid: ^3.0.7
 
   # 
   styled_divider: ^1.0.5
 
   # new dictionary feature
-  free_english_dictionary: ^0.0.3
+  # free_english_dictionary: ^0.0.3
   social_media_flutter: ^0.0.2
   flutter_svg: ^2.0.9
+  file_picker: ^5.5.0
 
 dev_dependencies:
   flutter_test:

@@ -16,6 +16,10 @@ class Url {
   }
 
 //for blog page
+  Uri blogUploadPost() {
+    return uri('$baseUrl/blog/upload');
+  }
+
   Uri blogLikePost(String articleId) {
     return uri('$baseUrl/blog/like/$articleId');
   }
@@ -30,8 +34,12 @@ class Url {
 
   //for shorts page
 
-  Uri shortsLikePost(String articleId) {
-    return uri('$baseUrl/shorts/like/$articleId');
+  Uri shortsLikePost(String id) {
+    return uri('$baseUrl/db/shorts/like');
+  }
+
+  Uri shortsDislikePost(String id) {
+    return uri('$baseUrl/db/shorts/like0$id');
   }
 
   //for shop page

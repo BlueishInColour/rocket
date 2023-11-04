@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'theme/theme.dart';
 import './theme/theme_provider.dart';
@@ -21,12 +23,38 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // darkTheme: darkMode,
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: const TabView(),
+      home: SplashScreen(),
     );
   }
 }
 
 // import 'package:flutter/material.dart';
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => TabView())));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.black,
+        body: Center(
+            child: CircleAvatar(
+                backgroundColor: Colors.grey[100],
+                radius: 80,
+                child: Image.asset('assets/turtle.png', height: 170))));
+  }
+}
 
 class TabView extends StatefulWidget {
   const TabView({super.key});
@@ -37,6 +65,7 @@ class TabView extends StatefulWidget {
 
 class TabViewState extends State<TabView> with SingleTickerProviderStateMixin {
   late TabController controller;
+  PageStorageBucket pageBucket = PageStorageBucket();
 
   @override
   initState() {
@@ -62,12 +91,12 @@ class TabViewState extends State<TabView> with SingleTickerProviderStateMixin {
                 // automaticIndicatorColorAdjustment: false,
                 controller: controller,
                 tabs: [
-                  Tab(text: 'short'),
+                  Tab(text: 'shorts'),
                   Tab(text: 'stories'),
                 ])),
       ),
-      body: TabBarView(controller: controller, children: const [
-        ShortsScreen(),
+      body: TabBarView(controller: controller, children: [
+        ShortsScreen(bucket: pageBucket),
         EscapeScreen(),
         // StarShitScreen(),
       ]),

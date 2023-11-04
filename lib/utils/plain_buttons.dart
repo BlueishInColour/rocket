@@ -17,8 +17,9 @@ class PlainButton extends StatefulWidget {
 
     this.text = '',
     this.snackBarIcon = const Icon(Icons.abc),
-    this.badgeColor = Colors.green,
+    this.badgeColor = const Color.fromRGBO(76, 175, 80, 1),
     this.trailingText = '',
+    this.count = 0,
     this.showSheet = false,
     this.bottomSheetWidget = const SizedBox(),
     required this.requestUri,
@@ -40,6 +41,7 @@ class PlainButton extends StatefulWidget {
   final Widget child;
   final bool showSheet;
   final String text;
+  final int count;
   final Widget page;
   final String trailingText;
   final Widget bottomSheetWidget;
@@ -50,6 +52,7 @@ class PlainButton extends StatefulWidget {
 }
 
 class PlainButtonState extends State<PlainButton> {
+  // int count = widget.count;
   bool onClicked = false;
   void changeColor() {
     setState(() {
@@ -89,6 +92,7 @@ class PlainButtonState extends State<PlainButton> {
         label: Text(widget.text),
         alignment: Alignment.topCenter,
         child: IconButton(
+            iconSize: 17,
             onPressed: onPressed,
             color: onClicked ? Colors.green : null,
             icon: widget.leadingIcon));
@@ -122,9 +126,10 @@ class PlainCommentButtonState extends State<PlainCommentButton> {
         label: Text(widget.commentCount),
         alignment: Alignment.topCenter,
         child: IconButton(
+            iconSize: 17,
             onPressed: onPressed,
             icon: LineIcon.commentAlt(
-              color: onClicked ? Colors.green : null,
+              color: onClicked ? Colors.green : Colors.black,
             )));
   }
 }

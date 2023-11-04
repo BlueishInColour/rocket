@@ -6,6 +6,7 @@ import 'package:rocket/screens/starshit_store/init_starshit.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:rocket/screens/escape_blog/escape_horizontal_scrollview.dart';
 import '../../theme/theme.dart';
+import '../../utils/great_quill.dart';
 import 'escape_vertical_scrollview.dart';
 // import '../../utils/toggle_theme_button.dart';
 // import '../../utils/escape_icon.dart';
@@ -13,7 +14,8 @@ import 'escape_vertical_scrollview.dart';
 import '../../test/test_api.dart';
 import '../../utils/floating_button.dart';
 import '../../utils/create_post.dart';
-import '../../utils/quill.dart';
+import '../../utils/rte_quill.dart';
+
 import '../../utils/add_category.dart';
 
 class EscapeScreen extends StatefulWidget {
@@ -24,7 +26,7 @@ class EscapeScreen extends StatefulWidget {
 }
 
 class EscapeScreenState extends State<EscapeScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late TabController controller;
   final pageBucket = PageStorageBucket();
 
@@ -42,6 +44,9 @@ class EscapeScreenState extends State<EscapeScreen>
     'events',
     'location',
   ];
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   initState() {
@@ -91,8 +96,9 @@ class EscapeScreenState extends State<EscapeScreen>
               Navigator.push(
                   context,
                   PageRouteBuilder(
-                      pageBuilder: (context, _, __) =>
-                          const CreatePostScreen()));
+                      pageBuilder: (context, _, __) => RteQuill(
+                          // title: 'here',
+                          )));
             },
             icon: const LineIcon.alternateFeather(size: 32)));
   }

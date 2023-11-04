@@ -9,7 +9,9 @@ environment:
 dependencies:
   dart_frog: ^1.0.0
   mongo_dart: ^0.9.3
-  http: ^1.0.0
+  # imagekit: ^0.0.5
+  imagekit_io: ^0.0.3
+  # http: ^1.0.0
 
 
 dev_dependencies:

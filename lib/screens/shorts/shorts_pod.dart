@@ -5,22 +5,23 @@ import 'package:line_icons/line_icon.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:rocket/theme/theme.dart';
 
-import 'package:rocket/models/article.dart';
+import 'package:rocket/models/shorts.dart';
 // import '../../utils/comment_screen.dart';
 import '../../services/url.dart';
 import '../../utils/plain_buttons.dart';
 import '../../utils/utils_functions.dart';
 // import '../../utils/write_comment.dart';
 // import '../../utils/utils_functions.dart';
+import '../../utils/like_button.dart';
 
 class ShortsPod extends StatefulWidget {
   const ShortsPod(
       {super.key,
       this.podWidth = 470,
       this.podHeight = 250,
-      required this.article});
+      required this.shorts});
 
-  final Article article;
+  final Shorts shorts;
   final double podWidth;
   final double podHeight;
   @override
@@ -30,7 +31,7 @@ class ShortsPod extends StatefulWidget {
 class ShortsPodState extends State<ShortsPod> {
   @override
   Widget build(BuildContext context) {
-    final article = widget.article;
+    final shorts = widget.shorts;
 //
 
     Widget creatorHeader(context) {
@@ -41,7 +42,7 @@ class ShortsPodState extends State<ShortsPod> {
         ),
         const SizedBox(width: 5),
         Text(
-          article.creator,
+          shorts.creator,
           style: TextStyle(
               overflow: TextOverflow.ellipsis,
               color: lPalette.darkText,
@@ -57,7 +58,7 @@ class ShortsPodState extends State<ShortsPod> {
 
           // height: 250,
           child: CachedNetworkImage(
-              imageUrl: article.pictureUrl,
+              imageUrl: shorts.picture,
               fit: BoxFit.cover,
               placeholder: (context, url) {
                 return Container(
@@ -75,7 +76,7 @@ class ShortsPodState extends State<ShortsPod> {
                       borderRadius: BorderRadius.circular(15)),
                   height: 250,
                   child: Center(
-                    child: Text(article.pictureUrl),
+                    child: Text(shorts.picture),
                   ))),
         ),
       );
@@ -84,12 +85,12 @@ class ShortsPodState extends State<ShortsPod> {
     Widget textBody(context) {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 5),
-        child: Text(article.title,
+        child: Text(shorts.text,
             maxLines: 3,
             style: GoogleFonts.zeyada(
               // overflow: TextOverflow.ellipsis,
               color: lPalette.darkText,
-              fontSize: widget.article.pictureUrl.isNotEmpty ? 20 : 25,
+              fontSize: widget.shorts.picture.isNotEmpty ? 20 : 25,
               fontWeight: FontWeight.bold,
             )),
       );
@@ -102,18 +103,12 @@ class ShortsPodState extends State<ShortsPod> {
         child: Column(
             // mainAxisAlignment: ,
             children: [
-              PlainButton(
-                leadingIcon: const LineIcon.thumbsUpAlt(),
-                text: article.likesCount,
-                snackBarIcon: LineIcon.thumbsUpAlt(
-                  color: Colors.white60,
-                ),
-                onClickedSnackBarText: 'post liked',
-                unClickedSnackBarText: 'you disliked this post',
-                requestUri: Url().shortsLikePost(article.id),
+              LikeButton(
+                id: shorts.id,
+                count: shorts.likesCount,
               ),
               const SizedBox(height: 5),
-              const PlainCommentButton(),
+              PlainCommentButton(commentCount: shorts.commentCount),
             ]),
       );
     }
@@ -144,7 +139,7 @@ class ShortsPodState extends State<ShortsPod> {
                 children: [
                   creatorHeader(context),
                   const SizedBox(height: 4),
-                  article.pictureUrl.isEmpty ? SizedBox() : image(context),
+                  shorts.picture.isEmpty ? SizedBox() : image(context),
                   textBody(context),
                   const SizedBox(height: 4),
                   styledivider

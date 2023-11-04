@@ -97,9 +97,12 @@ class WrappedButtonState extends State<WrappedButton> {
               label: Text(widget.text),
               child: Row(
                 children: [
-                  IconButton(onPressed: onPressed, icon: widget.leadingIcon),
+                  IconButton(
+                      iconSize: 17,
+                      onPressed: onPressed,
+                      icon: widget.leadingIcon),
                   const SizedBox(width: 5),
-                  Text(widget.trailingText)
+                  Text(widget.trailingText, style: TextStyle(fontSize: 12))
                 ],
               )),
         ),
@@ -145,7 +148,9 @@ class CommentButtonState extends State<CommentButton> {
               child: Row(
                 children: [
                   IconButton(
-                      onPressed: onPressed, icon: const LineIcon.commentAlt()),
+                      iconSize: 17,
+                      onPressed: onPressed,
+                      icon: const LineIcon.commentAlt()),
                 ],
               )),
         ),
